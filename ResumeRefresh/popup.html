@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ResumeRefresh</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="app-shell">
+    <div class="brand">ResumeRefresh</div>
+
+    <section id="account-view" class="view hidden">
+      <div class="section-title">Make Your Account</div>
+      <p class="subtitle">Use your Gmail address to create your ResumeRefresh account.</p>
+      <form id="account-form" novalidate>
+        <label for="name">Name</label>
+        <input id="name" type="text" placeholder="Your name" maxlength="80" required>
+        <label for="gmail">Gmail</label>
+        <input id="gmail" type="email" placeholder="you@gmail.com" maxlength="160" required>
+        <div id="gmail-error" class="field-error" role="alert"></div>
+        <button id="account-submit" class="primary-btn" type="submit">Sign In</button>
+      </form>
+    </section>
+
+    <section id="job-view" class="view hidden">
+      <div class="section-title">Paste Your Job Description</div>
+      <textarea id="job-description" maxlength="30000" placeholder="Paste the job description here..."></textarea>
+      <div class="upload-heading">Upload Your Recent Resume</div>
+      <input id="resume-file" type="file" accept=".pdf,application/pdf" hidden>
+      <button id="resume-dropzone" class="dropzone" type="button">
+        <span class="dropzone-title">Drag &amp; Drop Resume</span>
+        <span class="dropzone-or">or</span>
+        <span class="dropzone-link">Click to Upload</span>
+        <span id="selected-file" class="selected-file"></span>
+      </button>
+      <div class="upload-note">PDF only</div>
+      <div id="resume-error" class="field-error" role="alert"></div>
+      <button id="submit-job" class="primary-btn" type="button">Submit</button>
+      <button id="change-account" class="text-btn" type="button">Change account</button>
+    </section>
+
+    <section id="processing-view" class="view processing hidden" aria-live="polite">
+      <div class="processing-title">Converting...</div>
+      <div class="spinner" aria-hidden="true"></div>
+      <p id="processing-message">Reading your resume...</p>
+    </section>
+
+    <section id="error-view" class="view hidden" aria-live="assertive">
+      <div class="section-title">Something went wrong</div>
+      <p id="error-message" class="subtitle">Please try again.</p>
+      <button id="retry-btn" class="primary-btn" type="button">Try Again</button>
+    </section>
+
+    <section id="result-view" class="view result-view hidden">
+      <div class="result-heading">
+        <div>
+          <div class="section-title">Comparison</div>
+          <p class="subtitle result-subtitle">Your resume and the personalized version.</p>
+        </div>
+        <button id="close-result" class="close-btn" type="button" aria-label="Close">×</button>
+      </div>
+
+      <div class="comparison">
+        <article class="resume-panel">
+          <div class="panel-title">Uploaded Resume</div>
+          <div id="uploaded-preview" class="resume-content"></div>
+        </article>
+        <article class="resume-panel">
+          <div class="panel-title">New Resume (Updated)</div>
+          <div id="generated-preview" class="resume-content generated"></div>
+        </article>
+      </div>
+
+      <div id="change-summary" class="change-summary">
+        <div class="summary-title">What Changed &amp; Why It's Better</div>
+        <div id="summary-content" class="summary-content"></div>
+      </div>
+
+      <button id="download-resume" class="primary-btn" type="button">Download New Resume</button>
+    </section>
+
+    <footer class="footer">ResumeRefresh • v2.1.3</footer>
+  </main>
+  <script src="config.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
