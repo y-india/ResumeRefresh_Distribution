@@ -271,3 +271,8 @@ els.closeResult.addEventListener('click', () => show(els.jobView));
 els.downloadResume.addEventListener('click', downloadGeneratedResume);
 
 init();
+
+
+
+
+
