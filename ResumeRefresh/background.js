@@ -6,3 +6,10 @@ chrome.commands.onCommand.addListener(async (command) => {
     console.warn('Could not open popup from command:', error);
   }
 });
+
+
+
+
+
+
+
